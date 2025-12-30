@@ -17,8 +17,7 @@ export class Window {
         titlebar.style.height = `${this.titlebarHeight}px`;
         titlebar.style.width = "100%";
         titlebar.style.backgroundColor = "black";
-        titlebar.onmousedown = () => {this.dragging = true}
-        titlebar.onmouseup = () => {this.dragging = false}
+        titlebar.onmousedown = this.onTitlebarDown.bind(this);
         this.element.appendChild(titlebar);
 
         var contentElement = document.createElement("div");
@@ -33,6 +32,7 @@ export class Window {
 
         this.dragging = false;
         addEventListener("mousemove", this.onMouseMove.bind(this));
+        addEventListener("mouseup", this.onMouseUp.bind(this));
     }
     setPosition(position) {
         this.position = position;
@@ -53,11 +53,18 @@ export class Window {
         this.element.getElementById("window_titlebar").style.height = `${this.titlebarHeight}px`;
     }
 
-    
-
+    onTitlebarDown(event) {
+        this.dragging = true;
+        var x = event.clientX - this.position.x;
+        var y = event.clientY - this.position.y;
+        this.dragOffset = new Vector2(x, y);
+    }
+    onMouseUp(event) {
+        this.dragging = false;
+    }
     onMouseMove(event) {
         if (this.dragging) {
-            this.setPosition(new Vector2(event.clientX, event.clientY));
+            this.setPosition(new Vector2(event.clientX - this.dragOffset.x, event.clientY - this.dragOffset.y));
         }
     }
 }
