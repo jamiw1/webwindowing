@@ -14,13 +14,13 @@ export class Window {
         this.element.style.flexDirection = "column";
 
         var titlebar = document.createElement("div");
-        titlebar.class = "window_titlebar";
+        titlebar.className = "window_titlebar";
         titlebar.style.height = `${this.titlebarHeight}px`;
         titlebar.onmousedown = this.onTitlebarDown.bind(this);
         this.element.appendChild(titlebar);
 
         var contentElement = document.createElement("div");
-        contentElement.class = "window_content";
+        contentElement.className = "window_content";
         contentElement.innerHTML = content;
         contentElement.style.flex = "1";
         contentElement.style.width = "100%";
