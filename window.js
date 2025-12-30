@@ -1,20 +1,17 @@
 export class Window {
     constructor(content, initPosition, initSize, titlebarHeight) {
         this.content = content;
-        this.position = initPosition;
-        this.size = initSize;
         this.titlebarHeight = titlebarHeight;
 
         this.element = document.createElement("div");
         this.element.style.position = "fixed";
-        this.element.style.width = `${this.size.x}px`;
-        this.element.style.height = `${this.size.y}px`;
-        this.element.style.left = `${this.position.x}px`;
-        this.element.style.top = `${this.position.y}px`;
+        this.setSize(initSize);
+        this.setPosition(initPosition);
         this.element.style.display = "flex";
         this.element.style.flexDirection = "column";
 
         var titlebar = document.createElement("div");
+        titlebar.id = "windowTitlebar"
         titlebar.style.height = `${this.titlebarHeight}px`;
         titlebar.style.width = "100%";
         titlebar.style.backgroundColor = "black";
@@ -28,9 +25,18 @@ export class Window {
         this.element.appendChild(contentElement);
 
         document.getElementById("main").appendChild(this.element);
+
+        this.dragging = false;
     }
     setPosition(position) {
-
+        this.position = position;
+        this.element.style.left = `${this.position.x}px`;
+        this.element.style.top = `${this.position.y}px`;
+    }
+    setSize(size) {
+        this.size = size;
+        this.element.style.width = `${this.size.x}px`;
+        this.element.style.height = `${this.size.y}px`;
     }
     setContent(content) {
         this.content = content;
