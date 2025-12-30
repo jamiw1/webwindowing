@@ -2,3 +2,9 @@ div.window_titlebar {
     width: 100%;
     background-color: black;
 }
+.window_titlebar p {
+    color: white;
+    margin: 0px;
+    padding: 0px;
+    user-select: none;
+}

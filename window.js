@@ -2,8 +2,9 @@ import { Vector2 } from "./types.js";
 var Windows = [];
 
 export class Window {
-    constructor(content, initPosition, initSize, titlebarHeight) {
+    constructor(content, initPosition, initSize, title, titlebarHeight) {
         this.content = content;
+        this.title = title;
         this.titlebarHeight = titlebarHeight;
 
         this.element = document.createElement("div");
@@ -16,6 +17,9 @@ export class Window {
         var titlebar = document.createElement("div");
         titlebar.className = "window_titlebar";
         titlebar.style.height = `${this.titlebarHeight}px`;
+        titlebar.innerHTML = `
+            <p>${this.title}</p>
+        `;
         titlebar.onmousedown = this.onTitlebarDown.bind(this);
         this.element.appendChild(titlebar);
 
