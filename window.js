@@ -18,7 +18,7 @@ export class Window {
         titlebar.className = "window_titlebar";
         titlebar.style.height = `${this.titlebarHeight}px`;
         titlebar.innerHTML = `
-            <p>${this.title}</p>
+            <p class="window_titlebar_text">${this.title}</p>
         `;
         titlebar.onmousedown = this.onTitlebarDown.bind(this);
         this.element.appendChild(titlebar);
@@ -52,6 +52,12 @@ export class Window {
     setContent(content) {
         this.content = content;
         this.element.getElementsByClassName("window_content")[0].innerHTML = this.content;
+    }
+    setTitle(title) {
+        this.title = title;
+        var titlebar = this.element.getElementsByClassName("window_titlebar")[0];
+        console.log(titlebar);
+        titlebar.getElementsByClassName("window_titlebar_text")[0].textContent = this.title;
     }
     setTitlebarHeight(height) {
         this.titlebarHeight = height;
