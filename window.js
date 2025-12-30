@@ -1,8 +1,9 @@
 export class Window {
-    constructor(initPosition, initSize, content) {
+    constructor(content, initPosition, initSize, titlebarHeight) {
+        this.content = content;
         this.position = initPosition;
         this.size = initSize;
-        this.content = content;
+        this.titlebarHeight = titlebarHeight;
 
         this.element = document.createElement("div");
         this.element.style.position = "fixed";
@@ -14,7 +15,7 @@ export class Window {
         this.element.style.flexDirection = "column";
 
         var titlebar = document.createElement("div");
-        titlebar.style.height = "20px";
+        titlebar.style.height = `${this.titlebarHeight}px`;
         titlebar.style.width = "100%";
         titlebar.style.backgroundColor = "black";
         this.element.appendChild(titlebar);
@@ -27,6 +28,9 @@ export class Window {
         this.element.appendChild(contentElement);
 
         document.getElementById("main").appendChild(this.element);
+    }
+    setPosition(position) {
+
     }
     setContent(content) {
         this.content = content;
