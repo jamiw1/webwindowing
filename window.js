@@ -1,5 +1,7 @@
 import { Vector2 } from "./types.js";
 
+var Windows = [];
+
 export class Window {
     constructor(content, initPosition, initSize, titlebarHeight) {
         this.content = content;
@@ -33,6 +35,8 @@ export class Window {
         this.dragging = false;
         addEventListener("mousemove", this.onMouseMove.bind(this));
         addEventListener("mouseup", this.onMouseUp.bind(this));
+
+        Windows.unshift(this);
     }
     setPosition(position) {
         this.position = position;
@@ -58,6 +62,16 @@ export class Window {
         var x = event.clientX - this.position.x;
         var y = event.clientY - this.position.y;
         this.dragOffset = new Vector2(x, y);
+
+        const index = Windows.indexOf(this);
+        if (index > 0) { // neat, optimization! if it's not already the top, make it the top
+            Windows.splice(index, 1);
+            Windows.unshift(this);
+            for (let i = 0; i < Windows.length; i++) {
+                const element = Windows[i];
+                element.element.style.zIndex = Windows.length - i;
+            }
+        }
     }
     onMouseUp(event) {
         this.dragging = false;
