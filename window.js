@@ -1,5 +1,4 @@
 import { Vector2 } from "./types.js";
-
 var Windows = [];
 
 export class Window {
@@ -15,15 +14,13 @@ export class Window {
         this.element.style.flexDirection = "column";
 
         var titlebar = document.createElement("div");
-        titlebar.id = "window_titlebar"
+        titlebar.class = "window_titlebar";
         titlebar.style.height = `${this.titlebarHeight}px`;
-        titlebar.style.width = "100%";
-        titlebar.style.backgroundColor = "black";
         titlebar.onmousedown = this.onTitlebarDown.bind(this);
         this.element.appendChild(titlebar);
 
         var contentElement = document.createElement("div");
-        contentElement.id = "window_content"
+        contentElement.class = "window_content";
         contentElement.innerHTML = content;
         contentElement.style.flex = "1";
         contentElement.style.width = "100%";
@@ -50,11 +47,11 @@ export class Window {
     }
     setContent(content) {
         this.content = content;
-        this.element.getElementById("window_content").innerHTML = this.content;
+        this.element.getElementsByClassName("window_content")[0].innerHTML = this.content;
     }
     setTitlebarHeight(height) {
         this.titlebarHeight = height;
-        this.element.getElementById("window_titlebar").style.height = `${this.titlebarHeight}px`;
+        this.element.getElementsByClassName("window_titlebar")[0].style.height = `${this.titlebarHeight}px`;
     }
 
     onTitlebarDown(event) {
