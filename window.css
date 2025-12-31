@@ -40,21 +40,42 @@ div.window_titlebar {
     display: flex;
     align-items: center;
     gap: 2px;
-    margin-right: 4px;
+    margin-right: 2px;
 }
 
-.window_titlebar_buttons button {
+.window_titlebar_buttons input {
     height: 14px;
     image-rendering: pixelated;
-    border-radius: 0;
-    border-width: 0;
+    border: 0;
     padding: 0;
     margin: 0;
     font-family: 'W95FA', sans-serif;
-    background-color: #c0c0c0;
-    box-shadow: 
-        inset 1px 1px 0px 0px #ffffff,
-        inset -1px -1px 0px 0px #808080,
-        0px 0px 0px 0px #dfdfdf,
-        1px 1px 0px 0px #000000;
+}
+.window_titlebar_buttons .titlebar_button {
+    width: 16px;
+    height: 14px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.window_titlebar_buttons #minimize {
+    background: url("assets/minimizetitlebutton.png");
+}
+.window_titlebar_buttons #minimize:active {
+    background: url("assets/minimizetitlebuttondown.png");
+}
+
+.window_titlebar_buttons #maximize {
+    background: url("assets/maximizetitlebutton.png");
+}
+.window_titlebar_buttons #maximize:active {
+    background: url("assets/maximizetitlebuttondown.png");
+}
+
+.window_titlebar_buttons #close {
+    background: url("assets/closetitlebutton.png");
+}
+.window_titlebar_buttons #close:active {
+    background: url("assets/closetitlebuttondown.png");
 }

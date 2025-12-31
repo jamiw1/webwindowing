@@ -20,9 +20,12 @@ export class Window {
         titlebar.style.height = `${this.titlebarHeight}px`;
         titlebar.innerHTML = `
             <p class="window_titlebar_text">${this.title}</p>
-            <div class="window_titlebar_buttons">
-                <button><img src="assets/lefttitlebuttons.png"></button>
-                <button><img src="assets/righttitlebutton.png"></button>
+            <div class="window_titlebar_buttons" onmousedown="event.stopPropagation();">
+                <div style="display: flex; flex-direction: row;">
+                    <input type="button" id="minimize" class="titlebar_button"></input>
+                    <input type="button" id="maximize" class="titlebar_button"></input>
+                </div>
+                <input type="button" id="close" class="titlebar_button"></input>
             </div>
         `;
         titlebar.onmousedown = this.onTitlebarDown.bind(this);
