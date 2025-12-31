@@ -20,6 +20,10 @@ export class Window {
         titlebar.style.height = `${this.titlebarHeight}px`;
         titlebar.innerHTML = `
             <p class="window_titlebar_text">${this.title}</p>
+            <div class="window_titlebar_buttons">
+                <button><img src="assets/lefttitlebuttons.png"></button>
+                <button><img src="assets/righttitlebutton.png"></button>
+            </div>
         `;
         titlebar.onmousedown = this.onTitlebarDown.bind(this);
         this.element.appendChild(titlebar);
