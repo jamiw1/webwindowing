@@ -1,10 +1,35 @@
+@font-face {
+  font-family: 'MS Sans Serif';
+  src: url('fonts/ms-sans-serif.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+div.window {
+    border-style: groove;
+    background-color: #c0c0c0;
+    box-shadow: 
+        inset 1px 1px 0px 0px #ffffff,
+        inset -1px -1px 0px 0px #808080,
+        0px 0px 0px 1px #dfdfdf,
+        1px 1px 0px 1px #000000;
+}
+
 div.window_titlebar {
-    width: 100%;
-    background-color: black;
+    max-width: 100%;
+    padding-left: 3px;
+    background-color: #00007F;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 .window_titlebar p {
     color: white;
     margin: 0px;
     padding: 0px;
+    font-family: 'MS Sans Serif', sans-serif;
+    letter-spacing: 0.5px;
+    font-size: 11px;
+    transform: translateX(0.25px);
     user-select: none;
 }

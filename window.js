@@ -9,6 +9,7 @@ export class Window {
 
         this.element = document.createElement("div");
         this.element.style.position = "fixed";
+        this.element.className = "window";
         this.setSize(initSize);
         this.setPosition(initPosition);
         this.element.style.display = "flex";
@@ -56,7 +57,6 @@ export class Window {
     setTitle(title) {
         this.title = title;
         var titlebar = this.element.getElementsByClassName("window_titlebar")[0];
-        console.log(titlebar);
         titlebar.getElementsByClassName("window_titlebar_text")[0].textContent = this.title;
     }
     setTitlebarHeight(height) {
