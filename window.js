@@ -2,7 +2,7 @@ import { Vector2 } from "./types.js";
 var Windows = [];
 
 export class Window {
-    constructor(content, initPosition, initSize, title, titlebarHeight) {
+    constructor(content, className, initPosition, initSize, title, titlebarHeight) {
         this.content = content;
         this.title = title;
         this.titlebarHeight = titlebarHeight;
@@ -34,7 +34,7 @@ export class Window {
         this.element.appendChild(titlebar);
 
         var contentElement = document.createElement("div");
-        contentElement.className = "window_content";
+        contentElement.className = `window_content ${className}`;
         contentElement.innerHTML = content;
         contentElement.style.flex = "1";
         contentElement.style.width = "100%";
