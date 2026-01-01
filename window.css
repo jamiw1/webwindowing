@@ -3,17 +3,32 @@
   src:
     url("assets/tahomabd.ttf") format("truetype"),
     local("Tahoma"),
-    
 }
 
-div.window {
+@font-face {
+  font-family: "MS Sans Serif";
+  src:
+    url("assets/ms-sans-serif-1.ttf") format("truetype"),
+    local("MS Sans Serif"),
+}
+
+.window {
     background-color: rgb(212, 208, 200);
+    margin: 0;
     padding: 3px;
+    font-family: "MS Sans Serif", sans-serif;
+    font-size: 8pt;
+    font-smooth: never;
     box-shadow: 
         inset 1px 1px 0px 0px #ffffff,
         inset -1px -1px 0px 0px #808080,
         0px 0px 0px 0px #dfdfdf,
         1px 1px 0px 0px #000000;
+}
+
+.window_content {
+    margin: 0;
+    padding: 0;
 }
 
 div.window_titlebar {
