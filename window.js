@@ -30,7 +30,7 @@ export class Window {
         `;
         titlebar.onmousedown = this.onTitlebarDown.bind(this);
         var closeButton = titlebar.getElementsByClassName("close")[0];
-        closeButton.onmousedown = this.onCloseButtonPress.bind(this);
+        closeButton.onmouseup = this.onCloseButtonPress.bind(this);
         this.element.appendChild(titlebar);
 
         var contentElement = document.createElement("div");
@@ -38,7 +38,6 @@ export class Window {
         contentElement.innerHTML = content;
         contentElement.style.flex = "1";
         contentElement.style.width = "100%";
-        contentElement.style.backgroundColor = "white";
         this.element.appendChild(contentElement);
 
         document.getElementById("main").appendChild(this.element);
