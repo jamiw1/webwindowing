@@ -22,13 +22,15 @@ export class Window {
             <p class="window_titlebar_text">${this.title}</p>
             <div class="window_titlebar_buttons" onmousedown="event.stopPropagation();">
                 <div style="display: flex; flex-direction: row;">
-                    <input type="button" id="minimize" class="titlebar_button"></input>
-                    <input type="button" id="maximize" class="titlebar_button"></input>
+                    <input type="button" id="minimize" class="titlebar_button minimize"></input>
+                    <input type="button" id="maximize" class="titlebar_button maximize"></input>
                 </div>
-                <input type="button" id="close" class="titlebar_button"></input>
+                <input type="button" id="close" class="titlebar_button close"></input>
             </div>
         `;
         titlebar.onmousedown = this.onTitlebarDown.bind(this);
+        var closeButton = titlebar.getElementsByClassName("close")[0];
+        closeButton.onmousedown = this.onCloseButtonPress.bind(this);
         this.element.appendChild(titlebar);
 
         var contentElement = document.createElement("div");
@@ -94,5 +96,11 @@ export class Window {
         if (this.dragging) {
             this.setPosition(new Vector2(event.clientX - this.dragOffset.x, event.clientY - this.dragOffset.y));
         }
+    }
+
+    onCloseButtonPress(event) {
+        console.log("press");
+        const index = Windows.indexOf(this);
+        this.element.remove();
     }
 }
