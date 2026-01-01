@@ -7,7 +7,7 @@
 }
 
 div.window {
-    background-color: #c0c0c0;
+    background-color: rgb(212, 208, 200);
     padding: 3px;
     box-shadow: 
         inset 1px 1px 0px 0px #ffffff,
@@ -49,7 +49,6 @@ div.window_titlebar {
     border: 0;
     padding: 0;
     margin: 0;
-    font-family: 'W95FA', sans-serif;
 }
 .window_titlebar_buttons .titlebar_button {
     width: 16px;
