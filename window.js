@@ -10,6 +10,7 @@ export class Window {
         for (let index = 0; index < Windows.length; index++) {
             const win = Windows[index];
             if (win.className == this.className) {
+                win.moveToFront();
                 return win;
             }
         }
@@ -82,13 +83,7 @@ export class Window {
         this.titlebarHeight = height;
         this.element.getElementsByClassName("window_titlebar")[0].style.height = `${this.titlebarHeight}px`;
     }
-
-    onTitlebarDown(event) {
-        this.dragging = true;
-        var x = event.clientX - this.position.x;
-        var y = event.clientY - this.position.y;
-        this.dragOffset = new Vector2(x, y);
-
+    moveToFront() {
         const index = Windows.indexOf(this);
         if (index > 0) { // neat, optimization! if it's not already the top, make it the top
             Windows.splice(index, 1);
@@ -98,6 +93,14 @@ export class Window {
                 element.element.style.zIndex = Windows.length - i;
             }
         }
+    }
+    onTitlebarDown(event) {
+        this.dragging = true;
+        var x = event.clientX - this.position.x;
+        var y = event.clientY - this.position.y;
+        this.dragOffset = new Vector2(x, y);
+
+        this.moveToFront();
     }
     onMouseUp(event) {
         this.dragging = false;
