@@ -29,10 +29,11 @@ body {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    height: 100vh;
+    height: 100%;
     row-gap: 28px;
     align-content: flex-start;
     padding: 4px;
+    overflow: hidden;
 }
 
 .desktop_icon {

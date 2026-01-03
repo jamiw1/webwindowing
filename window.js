@@ -6,6 +6,7 @@ export class Window {
         this.content = content;
         this.title = title;
         this.titlebarHeight = titlebarHeight;
+        this.className = className;
 
         this.element = document.createElement("div");
         this.element.style.position = "fixed";
