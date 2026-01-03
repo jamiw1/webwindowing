@@ -47,6 +47,10 @@ export class Window {
         addEventListener("mouseup", this.onMouseUp.bind(this));
 
         Windows.unshift(this);
+        for (let i = 0; i < Windows.length; i++) {
+            const element = Windows[i];
+            element.element.style.zIndex = Windows.length - i;
+        }
     }
     setPosition(position) {
         this.position = position;
