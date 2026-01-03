@@ -29,7 +29,7 @@ desktopIcons.forEach(element => {
     });
 });
 
-document.getElementById("main").addEventListener('click', () => {
+document.getElementById("desktop_icons").addEventListener('click', () => {
     desktopIcons.forEach(icon => icon.classList.remove('selected'));
 });
 
