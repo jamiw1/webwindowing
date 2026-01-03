@@ -75,7 +75,7 @@ body {
     margin: 0;
     padding: 0;
     bottom: 0;
-    image-rendering: crisp-edges;
+    image-rendering: pixelated;
     border-top: 1px solid rgb(212, 208, 200);
     box-shadow: inset 0 1px 0 0 white;
 }
@@ -86,15 +86,46 @@ body {
     align-items: end;
     margin-bottom: 2px;
     margin-left: 2px;
+    gap: 2px;
     image-rendering: pixelated;
 }
 
 .start_button {
-    background-image: url('assets/taskbarbutton.png'); 
+    background-image: url('assets/startbutton.png'); 
     width: 55px; 
     height: 22px; 
     border: 0;
 }
 .start_button:active {
     background-image: url('assets/startbuttondown.png'); 
+}
+
+.window_button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-image: url('assets/taskbarbutton.png');
+    font-family: "MS Sans Serif", sans-serif;
+    font-size: 8pt;
+    font-smooth: never;
+    width: 160px;
+    height: 22px;
+    border: 0;
+    user-select: none;
+}
+.window_button p {
+    transform: translateY(1px);
+    user-select: none;
+}
+.window_button img {
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+    margin-right: 3px;
+    margin-top: 3px;
+    margin-bottom: 4px;
+    image-rendering: pixelated;
+}
+.window_button:active {
+    background-image: url('assets/taskbarbuttondown.png');
 }
