@@ -19,7 +19,7 @@ desktopIcons.forEach(element => {
         const width = doc.querySelector('meta[name="window-width"]')?.content || 400;
         const height = doc.querySelector('meta[name="window-height"]')?.content || 300;
 
-        var newWin = new Window(rawHtml, title, new Vector2(10, 10), new Vector2(width, height), windowPath, 18);
+        var newWin = new Window(rawHtml, windowPath, new Vector2(10, 10), new Vector2(width, height), title, 18);
     });
 });
 
