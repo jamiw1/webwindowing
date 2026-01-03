@@ -21,6 +21,11 @@ desktopIcons.forEach(element => {
 
         var newWin = new Window(rawHtml, windowPath, new Vector2(10, 10), new Vector2(width, height), title, 18);
     });
+    element.addEventListener('click', () => {
+        desktopIcons.forEach(icon => icon.classList.remove('selected'));
+        
+        element.classList.add('selected');
+    });
 });
 
 var win = new Window(`<p style="background: red;">hi</p>`, "win1", new Vector2(100, 10), new Vector2(300,200), "File Manager", 18);
