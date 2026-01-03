@@ -7,6 +7,12 @@ export class Window {
         this.title = title;
         this.titlebarHeight = titlebarHeight;
         this.className = className;
+        for (let index = 0; index < Windows.length; index++) {
+            const win = Windows[index];
+            if (win.className == this.className) {
+                return win;
+            }
+        }
 
         this.element = document.createElement("div");
         this.element.style.position = "fixed";
@@ -106,5 +112,6 @@ export class Window {
         console.log("press");
         const index = Windows.indexOf(this);
         this.element.remove();
+        Windows.splice(index, 1);
     }
 }

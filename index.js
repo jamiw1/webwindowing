@@ -18,8 +18,12 @@ desktopIcons.forEach(element => {
         const title = doc.querySelector('meta[name="window-title"]')?.content || "default title";
         const width = doc.querySelector('meta[name="window-width"]')?.content || 400;
         const height = doc.querySelector('meta[name="window-height"]')?.content || 300;
+        const centerx = window.innerWidth / 2;
+        const centery = window.innerHeight / 2;
+        const posx = centerx - (width / 2);
+        const posy = centery - (height / 2);
 
-        var newWin = new Window(rawHtml, windowPath, new Vector2(10, 10), new Vector2(width, height), title, 18);
+        var newWin = new Window(rawHtml, windowPath, new Vector2(posx, posy), new Vector2(width, height), title, 18);
     });
     element.addEventListener('click', (event) => {
         desktopIcons.forEach(icon => icon.classList.remove('selected'));
