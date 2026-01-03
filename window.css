@@ -1,17 +1,3 @@
-@font-face {
-  font-family: "Tahoma";
-  src:
-    url("assets/tahomabd.ttf") format("truetype"),
-    local("Tahoma"),
-}
-
-@font-face {
-  font-family: "MS Sans Serif";
-  src:
-    url("assets/ms-sans-serif-1.ttf") format("truetype"),
-    local("MS Sans Serif"),
-}
-
 .window {
     background-color: rgb(212, 208, 200);
     margin: 0;
