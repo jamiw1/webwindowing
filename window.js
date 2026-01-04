@@ -1,5 +1,6 @@
 import { Vector2 } from "./types.js";
-var Windows = [];
+export var Windows = [];
+const windowsModified = new CustomEvent("windowsModified");
 
 export class Window {
     constructor(content, className, initPosition, initSize, title, titlebarHeight) {
@@ -59,6 +60,8 @@ export class Window {
             const element = Windows[i];
             element.element.style.zIndex = Windows.length - i;
         }
+
+        window.dispatchEvent(windowsModified);
     }
     setPosition(position) {
         this.position = position;
@@ -78,6 +81,7 @@ export class Window {
         this.title = title;
         var titlebar = this.element.getElementsByClassName("window_titlebar")[0];
         titlebar.getElementsByClassName("window_titlebar_text")[0].textContent = this.title;
+        window.dispatchEvent(windowsModified);
     }
     setTitlebarHeight(height) {
         this.titlebarHeight = height;
@@ -93,6 +97,7 @@ export class Window {
                 element.element.style.zIndex = Windows.length - i;
             }
         }
+        window.dispatchEvent(windowsModified);
     }
     onTitlebarDown(event) {
         this.dragging = true;
@@ -110,11 +115,13 @@ export class Window {
             this.setPosition(new Vector2(event.clientX - this.dragOffset.x, event.clientY - this.dragOffset.y));
         }
     }
-
-    onCloseButtonPress(event) {
-        console.log("press");
+    remove() {
         const index = Windows.indexOf(this);
         this.element.remove();
         Windows.splice(index, 1);
+        window.dispatchEvent(windowsModified);
+    }
+    onCloseButtonPress(event) {
+        this.remove();
     }
 }

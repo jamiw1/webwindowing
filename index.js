@@ -1,5 +1,5 @@
 import { Vector2 } from "./types.js";
-import { Window } from "./window.js";
+import { Window, Windows } from "./window.js";
 
 async function getContentFromUri(uri) {
     return await fetch(uri).then(r => r.text())
@@ -35,4 +35,19 @@ desktopIcons.forEach(element => {
 
 document.getElementById("desktop_icons").addEventListener('click', () => {
     desktopIcons.forEach(icon => icon.classList.remove('selected'));
+});
+
+const taskbarWindowButtons = document.getElementById("taskbar_window_buttons");
+window.addEventListener("windowsModified", () => {
+    taskbarWindowButtons.innerHTML = "";
+    for (let index = 0; index < Windows.length; index++) {
+        const win = Windows[index];
+        var newButton = document.createElement("div");
+        newButton.className = (index == 0) ? "window_button infront" : "window_button";
+        newButton.innerHTML = `
+            <img src="assets/icons/w2k_default_application.ico">
+            <p>${win.title}</p>
+        `;
+        taskbarWindowButtons.appendChild(newButton);
+    }
 });
