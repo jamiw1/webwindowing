@@ -25,7 +25,6 @@ export class Window {
         this.element.style.flexDirection = "column";
 
         var titlebar = document.createElement("div");
-        titlebar.className = "window_titlebar";
         titlebar.style.height = `${this.titlebarHeight}px`;
         titlebar.innerHTML = `
             <p class="window_titlebar_text">${this.title}</p>
@@ -37,6 +36,7 @@ export class Window {
                 <input type="button" id="close" class="titlebar_button close"></input>
             </div>
         `;
+        this.titlebar = titlebar;
         titlebar.onmousedown = this.onTitlebarDown.bind(this);
         var closeButton = titlebar.getElementsByClassName("close")[0];
         closeButton.onmouseup = this.onCloseButtonPress.bind(this);
@@ -59,7 +59,10 @@ export class Window {
         for (let i = 0; i < Windows.length; i++) {
             const element = Windows[i];
             element.element.style.zIndex = Windows.length - i;
+            element.titlebar.className = "window_titlebar";
         }
+
+        titlebar.className = "window_titlebar infront";
 
         window.dispatchEvent(windowsModified);
     }
@@ -95,7 +98,9 @@ export class Window {
             for (let i = 0; i < Windows.length; i++) {
                 const element = Windows[i];
                 element.element.style.zIndex = Windows.length - i;
+                element.titlebar.className = "window_titlebar";
             }
+            this.titlebar.className = "window_titlebar infront";
         }
         window.dispatchEvent(windowsModified);
     }

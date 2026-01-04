@@ -20,14 +20,18 @@
 div.window_titlebar {
     max-width: 100%;
     padding-left: 3px;
-    background: linear-gradient(to right, rgb(10, 36, 106), rgb(166, 202, 240));
+    background: linear-gradient(to right, rgb(128, 128, 128), rgb(192, 192, 192));
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
 }
+div.window_titlebar.infront {
+    background: linear-gradient(to right, rgb(10, 36, 106), rgb(166, 202, 240));
+}
+
 .window_titlebar p {
-    color: white;
+    color: rgb(212, 208, 200);
     /*text-shadow: 1px 0 0 white;*/
     font-family: 'Tahoma', sans-serif;
     font-smooth: never;
@@ -35,6 +39,9 @@ div.window_titlebar {
     letter-spacing: 1px;
     font-size: 11px;
     user-select: none;
+}
+.window_titlebar.infront p {
+    color: white;
 }
 
 .window_titlebar_buttons {
