@@ -37,20 +37,38 @@ document.getElementById("desktop_icons").addEventListener('click', () => {
     desktopIcons.forEach(icon => icon.classList.remove('selected'));
 });
 
+var taskbarClassOrder = [];
+
 const taskbarWindowButtons = document.getElementById("taskbar_window_buttons");
 window.addEventListener("windowsModified", () => {
     taskbarWindowButtons.innerHTML = "";
-    for (let index = 0; index < Windows.length; index++) {
-        const win = Windows[index];
-        var newButton = document.createElement("div");
-        newButton.className = (index == 0) ? "window_button infront" : "window_button";
-        newButton.innerHTML = `
-            <img src="assets/icons/w2k_default_application.ico">
-            <p>${win.title}</p>
-        `;
-        newButton.addEventListener("mouseup", () => {
-            win.moveToFront();
-        });
-        taskbarWindowButtons.appendChild(newButton);
-    }
+
+    Windows.forEach(win => {
+        if (!taskbarClassOrder.includes(win.className)) {
+            taskbarClassOrder.push(win.className);
+        }
+    });
+
+    taskbarClassOrder = taskbarClassOrder.filter(className => 
+        Windows.some(win => win.className === className)
+    );
+
+    taskbarClassOrder.forEach(className => {
+        const win = Windows.find(w => w.className === className);
+        if (win) {
+            const newButton = document.createElement("div");
+            newButton.className = (Windows[0] === win) ? "window_button infront" : "window_button";
+            
+            newButton.innerHTML = `
+                <img src="assets/icons/w2k_default_application.ico">
+                <p>${win.title}</p>
+            `;
+            
+            newButton.addEventListener("mouseup", () => {
+                win.moveToFront();
+            });
+
+            taskbarWindowButtons.appendChild(newButton);
+        }
+    });
 });
