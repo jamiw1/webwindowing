@@ -100,8 +100,8 @@ export class Window {
                 element.element.style.zIndex = Windows.length - i;
                 element.titlebar.className = "window_titlebar";
             }
-            this.titlebar.className = "window_titlebar infront";
         }
+        this.titlebar.className = "window_titlebar infront";
         window.dispatchEvent(windowsModified);
     }
     onTitlebarDown(event) {
@@ -124,6 +124,9 @@ export class Window {
         const index = Windows.indexOf(this);
         this.element.remove();
         Windows.splice(index, 1);
+        if (Windows[0] != null) {
+            Windows[0].moveToFront();
+        }
         window.dispatchEvent(windowsModified);
     }
     onCloseButtonPress(event) {

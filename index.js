@@ -7,23 +7,27 @@ async function getContentFromUri(uri) {
 
 const desktopIcons = document.querySelectorAll(".desktop_icon");
 
+async function openWindowFromPath(windowPath) {
+    const rawHtml = await getContentFromUri(windowPath);
+    const newClassName = windowPath.replaceAll('.','') 
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(rawHtml, 'text/html');
+
+    const title = doc.querySelector('meta[name="window-title"]')?.content || "default title";
+    const width = doc.querySelector('meta[name="window-width"]')?.content || 400;
+    const height = doc.querySelector('meta[name="window-height"]')?.content || 300;
+    const centerx = window.innerWidth / 2;
+    const centery = window.innerHeight / 2;
+    const posx = centerx - (width / 2);
+    const posy = centery - (height / 2);
+
+    return new Window(rawHtml, newClassName, new Vector2(posx, posy), new Vector2(width, height), title, 18);
+}
+
 desktopIcons.forEach(element => {
     element.addEventListener('dblclick', async (event) => {
         var windowPath = element.dataset.windowPath;
-        const rawHtml = await getContentFromUri(windowPath);
-        const newClassName = windowPath.replaceAll('.','') 
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(rawHtml, 'text/html');
-
-        const title = doc.querySelector('meta[name="window-title"]')?.content || "default title";
-        const width = doc.querySelector('meta[name="window-width"]')?.content || 400;
-        const height = doc.querySelector('meta[name="window-height"]')?.content || 300;
-        const centerx = window.innerWidth / 2;
-        const centery = window.innerHeight / 2;
-        const posx = centerx - (width / 2);
-        const posy = centery - (height / 2);
-
-        var newWin = new Window(rawHtml, newClassName, new Vector2(posx, posy), new Vector2(width, height), title, 18);
+        openWindowFromPath(windowPath);
     });
     element.addEventListener('click', (event) => {
         desktopIcons.forEach(icon => icon.classList.remove('selected'));
@@ -72,3 +76,7 @@ window.addEventListener("windowsModified", () => {
         }
     });
 });
+
+//on "startup"
+openWindowFromPath("underconstruction.html")
+openWindowFromPath("viewwarning.html");
