@@ -26,8 +26,18 @@ async function openWindowFromPath(windowPath) {
 
 desktopIcons.forEach(element => {
     element.addEventListener('dblclick', async (event) => {
-        var windowPath = element.dataset.windowPath;
-        openWindowFromPath(windowPath);
+        const windowPath = element.dataset.windowPath;
+        var window = await openWindowFromPath(windowPath);
+        const scripts = (await window).element.querySelectorAll("script");
+        scripts.forEach(oldScript => {
+            const newScript = document.createElement("script");
+            if (oldScript.src) {
+                newScript.src = oldScript.src;
+            } else {
+                newScript.textContent = oldScript.textContent;
+            }
+            window.element.appendChild(newScript).parentNode.removeChild(newScript);
+        });
     });
     element.addEventListener('click', (event) => {
         desktopIcons.forEach(icon => icon.classList.remove('selected'));

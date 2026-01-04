@@ -2,14 +2,15 @@
 <meta name="window-width" content=300>
 <meta name="window-height" content=500>
 <style>
-    .songlist {
+    #songlist {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 15px;
     }
     .songitem {
         display: flex;
+        position: relative;
         flex-direction: column;
         align-items: start;
         gap: 4px;
@@ -20,6 +21,7 @@
     .songitem img {
         width: 130px;
         height: 130px;
+        border-style: ridge;
     }
     .songitem h3 {
         font-size: 10pt;
@@ -29,26 +31,24 @@
     .songitem p {
         margin: 0;
     }
+    .songitem .tooltip {
+        visibility: hidden;
+        position: absolute;
+        background-color: khaki;
+        padding: 2px;
+        border-style: inset;
+        border-color: black;
+        border-width: 1px;
+        user-select: none;
+    }
+    .songitem:hover .tooltip {
+        visibility: visible;
+    }
 </style>
 <div style="margin: 3px;">
     <p>these are songs i generally just love or have loved, in no particular order</p>
-    <div class="songlist">
-        <div class="songitem">
-            <img src="assets/owl.gif">
-            <h3>those who know</h3>
-            <p>this is filler</p>
-        </div>
-        <div class="songitem">
+    <div id="songlist">
 
-        </div>
-        <div class="songitem">
-
-        </div>
-        <div class="songitem">
-
-        </div>
-        <div class="songitem">
-
-        </div>
     </div>
 </div>
+<script src="songlist.js"></script>
