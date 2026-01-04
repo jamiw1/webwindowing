@@ -86,7 +86,7 @@ body {
     align-items: end;
     margin-bottom: 2px;
     margin-left: 2px;
-    gap: 2px;
+    gap: 4px;
     image-rendering: pixelated;
 }
 
