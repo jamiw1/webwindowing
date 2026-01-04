@@ -133,3 +133,11 @@ body {
 .window_button.infront {
     background-image: url('assets/taskbarbuttonactive.png');
 }
+
+.window_button.infront img {
+    transform: translateY(1px);
+}
+.window_button.infront p {
+    transform: translateY(2px);
+    font-weight: bold;
+}
