@@ -36,7 +36,6 @@ div.window_titlebar.infront {
 
 .window_titlebar p {
     color: rgb(212, 208, 200);
-    /*text-shadow: 1px 0 0 white;*/
     font-family: 'Tahoma', sans-serif;
     font-smooth: never;
     -webkit-font-smoothing : none;
