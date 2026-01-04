@@ -24,6 +24,8 @@ export class Window {
         this.element.style.display = "flex";
         this.element.style.flexDirection = "column";
 
+        this.element.onmousedown = this.onWindowDown.bind(this);
+
         var titlebar = document.createElement("div");
         titlebar.style.height = `${this.titlebarHeight}px`;
         titlebar.innerHTML = `
@@ -110,6 +112,9 @@ export class Window {
         var y = event.clientY - this.position.y;
         this.dragOffset = new Vector2(x, y);
 
+        this.moveToFront();
+    }
+    onWindowDown(event) {
         this.moveToFront();
     }
     onMouseUp(event) {
