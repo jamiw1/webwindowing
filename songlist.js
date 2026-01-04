@@ -19,5 +19,10 @@ for (let index = 0; index < songs.length; index++) {
         <p>${song.artist}</p>
         <span class="tooltip">${song.content}</span>
     `;
+    songElement.addEventListener("mouseover", (event) => {
+        const tooltip = songElement.getElementsByClassName("tooltip")[0];
+        tooltip.style.top = `${event.clientY}px`;
+        tooltip.style.left = `${event.clientX}px`;
+    });
     songlist.appendChild(songElement);
 }

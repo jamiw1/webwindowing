@@ -33,22 +33,22 @@
     }
     .songitem .tooltip {
         visibility: hidden;
-        position: absolute;
-        background-color: khaki;
+        position: fixed;
+        background-color: rgb(255, 255, 225);
         padding: 2px;
         border-style: inset;
         border-color: black;
         border-width: 1px;
         user-select: none;
+        pointer-events: none;
+        max-width: 300px;
     }
-    .songitem:hover .tooltip {
+    .songitem img:hover ~ .tooltip {
         visibility: visible;
     }
 </style>
 <div style="margin: 3px;">
     <p>these are songs i generally just love or have loved, in no particular order</p>
-    <div id="songlist">
-
-    </div>
+    <div id="songlist"></div>
 </div>
 <script src="songlist.js"></script>
