@@ -48,6 +48,9 @@ window.addEventListener("windowsModified", () => {
             <img src="assets/icons/w2k_default_application.ico">
             <p>${win.title}</p>
         `;
+        newButton.addEventListener("mouseup", () => {
+            win.moveToFront();
+        });
         taskbarWindowButtons.appendChild(newButton);
     }
 });
