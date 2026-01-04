@@ -11,7 +11,7 @@ desktopIcons.forEach(element => {
     element.addEventListener('dblclick', async (event) => {
         var windowPath = element.dataset.windowPath;
         const rawHtml = await getContentFromUri(windowPath);
-
+        const newClassName = windowPath.replaceAll('.','') 
         const parser = new DOMParser();
         const doc = parser.parseFromString(rawHtml, 'text/html');
 
@@ -23,7 +23,7 @@ desktopIcons.forEach(element => {
         const posx = centerx - (width / 2);
         const posy = centery - (height / 2);
 
-        var newWin = new Window(rawHtml, windowPath, new Vector2(posx, posy), new Vector2(width, height), title, 18);
+        var newWin = new Window(rawHtml, newClassName, new Vector2(posx, posy), new Vector2(width, height), title, 18);
     });
     element.addEventListener('click', (event) => {
         desktopIcons.forEach(icon => icon.classList.remove('selected'));
