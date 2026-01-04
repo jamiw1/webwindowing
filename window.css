@@ -10,6 +10,7 @@
         inset -1px -1px 0px 0px #808080,
         0px 0px 0px 0px #dfdfdf,
         1px 1px 0px 0px #000000;
+    scrollbar-color: #808080 rgb(212, 208, 200);
 }
 
 .window_content {
